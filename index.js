@@ -127,16 +127,24 @@ Employee.prototype.averageScore=function(){
         
 }
 
-
 Employee.prototype.classifyPerformance=function(){
+if(this.averageScore <50){
+  console.log(`Low perfomance`);
 
-}
+}else{
+  console.log(`Best perfomance`);
+  
+}}
+    
 Employee.prototype.newFeedback=function(){
+
 
 }
 const employee = new Employee(20305,'Ayana',{'communication':50,'efficiency':60,'reliability':70},['love it','great','bad'])
 console.log(employee);
 console.log(employee.averageScore());
+console.log(employee.classifyPerformance());
+
 
 
 
@@ -158,11 +166,17 @@ function Course(title,instructor,students){
 }
 
 Course.prototype.studentsCompletedCourse=function(){
-
+   return Object.keys(this.students).name == 'Completed '
+  
 }
 Course.prototype.studentsEnrolled=function(){
 
 }
-Count.prototype.instructors=function(){
+Course.prototype.instructors=function(){
     
 }
+const course= new Course('Swahili',{name:'Manda',expertise:'Swahili',name:'Amel',expertise:'English'},
+  [{name:'Yana',completionStatus:'Completed'},{name:'John',completionStatus:'Not Completed'},{name:'Daniella',completionStatus:'Complated'}])
+console.log(course);
+console.log(course.studentsCompletedCourse());
+
