@@ -16,12 +16,12 @@
    };
    FeatureToggle.prototype.toggleFeature= function(flags){
     if ( this.flag == flags){
-        return enabled
+        return 'enabled'
     }  else {
-        return disabled
+        return 'disabled'
     }
-   };
-   function accessSimulation(feature,userRole){
+   }
+   FeatureToggle.prototype.accessSimulation=function(userRole){
    switch(userRole){
     case "admin":
         console.log(` Admins can access feature`);
@@ -29,26 +29,23 @@
         case "betaTesters":
          console.log(` Betatesters can access feature`);
          break;
+         case"managers":
+         console.log(`Managers can access feature`);
+         break;
+         default :
+         break;    
         
    }
    }
-
    const newFeature = new FeatureToggle('lightMode', 'true', ['admin','manager','student','betaTesters']);
    console.log(newFeature);
    console.log(newFeature.canAccess());
    console.log(newFeature.toggleFeature());
-   console.log(newFeature.accessSimulation('lightmode','amdin'));
+   console.log(newFeature.accessSimulation('betaTesters'));
    
-
-
-   
-
-
-
-
-// // // 2.In a freelancer time-tracking platform, create a TimeLog constructor function with properties: freelancerName (string),
-// // //  projectDetails (object with name and hourlyRate), and logs (array of objects with date, hoursWorked), then add prototype 
-// // // methods to calculate total earnings, filter logs by date range, and determine if weekly hours exceed 40 using if-else logic.
+  // 2.In a freelancer time-tracking platform, create a TimeLog constructor function with properties: freelancerName (string),
+ //  projectDetails (object with name and hourlyRate), and logs (array of objects with date, hoursWorked), then add prototype 
+// methods to calculate total earnings, filter logs by date range, and determine if weekly hours exceed 40 using if-else logic.
 
 function Timelog (freelancerName,projectDetails,logs){
     this.freelancerName=freelancerName;
@@ -57,7 +54,7 @@ function Timelog (freelancerName,projectDetails,logs){
 
     
 }
-Timelog.prototype.totalEarnings= function(hourlyRate,hoursWorked){
+Timelog.prototype.totalEarnings= function(){
       const earnings= (this.hourlyRate * this.hoursWorked)
      return earnings
 }
@@ -77,7 +74,7 @@ Timelog.prototype.dateRange= function(date){
 }
 const timelog = new Timelog('Sofia',{'name:Sof':'hourlyRate:20'},[{'date:5/2/2025':'hoursWorked:5'},{'date:6/2/2025':'hoursWorked:6'},{'date:7/2/2025':'hoursWorked:7'}])
 console.log(timelog);
-console.log(timelog.totalEarnings(20,5));
+console.log(timelog.totalEarnings());
 console.log(timelog.dateRange());
 
 
@@ -144,12 +141,6 @@ const employee = new Employee(20305,'Ayana',{'communication':50,'efficiency':60,
 console.log(employee);
 console.log(employee.averageScore());
 console.log(employee.classifyPerformance());
-
-
-
-
-
-
 
 
 
